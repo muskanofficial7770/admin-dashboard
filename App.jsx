@@ -5,7 +5,6 @@ import Dashboard from './pages/Dashboard.jsx';
 import ManageTeachers from './pages/ManageTeachers.jsx';
 import ManageStudents from './pages/ManageStudents.jsx';
 import RolesPermissions from './pages/RolesPermissions.jsx';
-import Reports from './pages/Reports.jsx';
 
 const App = () => {
   return (
@@ -29,11 +28,6 @@ const App = () => {
         <Route path="/roles" element={
           <Layout>
             <RolesPermissions />
-          </Layout>
-        } />
-        <Route path="/reports" element={
-          <Layout>
-            <Reports />
           </Layout>
         } />
         <Route path="*" element={<Navigate to="/" replace />} />

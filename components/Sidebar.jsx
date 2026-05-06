@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import '../styles/Sidebar.css';
 
 const Sidebar = () => {
   const [showRegisterForm, setShowRegisterForm] = useState(false);

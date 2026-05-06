@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import '../styles/ManageStudents.css';
 
 const ManageStudents = () => {
   const [students, setStudents] = useState([

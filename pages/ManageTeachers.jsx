@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/ManageTeachers.css';
 
 const ManageTeachers = () => {
   const [teachers, setTeachers] = useState([

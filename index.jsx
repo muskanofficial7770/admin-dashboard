@@ -1,4 +1,4 @@
-import './index.css'  // CSS import
+import './styles/Global.css'  // Global CSS import
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
