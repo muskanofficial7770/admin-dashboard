@@ -18,14 +18,6 @@ const Layout = ({ children }) => {
 
           {/* Spacer */}
           <div className="admin-header-spacer" />
-
-          {/* Right Actions */}
-          <div className="admin-header-actions">
-            <button className="admin-notification-button">
-              <span className="material-symbols-outlined">notifications</span>
-              <span className="admin-notification-dot" />
-            </button>
-          </div>
         </header>
 
         {/* Main Content Scroll Area */}

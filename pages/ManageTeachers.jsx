@@ -35,6 +35,8 @@ const ManageTeachers = () => {
 
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredTeachers, setFilteredTeachers] = useState(teachers);
 
   const handleAddTeacher = (e) => {
     e.preventDefault();
@@ -67,12 +69,29 @@ const ManageTeachers = () => {
     };
 
     setTeachers([newTeacher, ...teachers]);
+    setFilteredTeachers([newTeacher, ...teachers]);
     setNewName("");
     setNewEmail("");
   };
 
   const handleDelete = (id) => {
-    setTeachers(teachers.filter((t) => t.id !== id));
+    const updatedTeachers = teachers.filter((t) => t.id !== id);
+    setTeachers(updatedTeachers);
+    
+    // Also update filtered teachers
+    const updatedFiltered = filteredTeachers.filter((t) => t.id !== id);
+    setFilteredTeachers(updatedFiltered);
+  };
+
+  const handleSearchInputChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    
+    // Auto-filter as user types
+    const filtered = teachers.filter(teacher => 
+      teacher.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredTeachers(filtered);
   };
 
   return (
@@ -81,46 +100,50 @@ const ManageTeachers = () => {
         <div>
           <h2 className="manage-teachers-title">Manage Teachers</h2>
           <p className="manage-teachers-subtitle">
-            Add new teachers and manage existing faculty accounts.
+            Easily add, manage and view all teacher information here.
           </p>
         </div>
       </div>
 
       {/* Add New Teacher */}
       <section className="manage-teachers-card">
-        <h3 className="manage-teachers-card-title">Add New Teacher</h3>
-        <form
-          className="manage-teachers-form"
-          onSubmit={handleAddTeacher}
-        >
-          <div className="manage-teachers-form-col">
-            <label className="manage-teachers-label">Full Name</label>
-            <input
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-              className="manage-teachers-input"
-              placeholder="e.g. Dr. Emily Clarke"
-              type="text"
-            />
-          </div>
-          <div className="manage-teachers-form-col">
-            <label className="manage-teachers-label">Email</label>
-            <input
-              value={newEmail}
-              onChange={(e) => setNewEmail(e.target.value)}
-              className="manage-teachers-input"
-              placeholder="emily@university.edu"
-              type="email"
-            />
-          </div>
-          <button
-            type="submit"
-            className="manage-teachers-add-btn"
+        <div className="manage-teachers-card-header">
+          <h3 className="manage-teachers-card-title">Add New Teacher</h3>
+        </div>
+        <div className="manage-teachers-card-body">
+          <form
+            className="manage-teachers-form"
+            onSubmit={handleAddTeacher}
           >
-            <span className="material-symbols-outlined">add</span>
-            <span>Add Teacher</span>
-          </button>
-        </form>
+            <div className="manage-teachers-form-col">
+              <label className="manage-teachers-label">Full Name</label>
+              <input
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+                className="manage-teachers-input"
+                placeholder="Enter teacher full name"
+                type="text"
+              />
+            </div>
+            <div className="manage-teachers-form-col">
+              <label className="manage-teachers-label">Email</label>
+              <input
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
+                className="manage-teachers-input"
+                placeholder="Enter teacher email"
+                type="email"
+              />
+            </div>
+            <button
+              type="submit"
+              className="manage-teachers-add-btn"
+            >
+              <span className="material-symbols-outlined">add</span>
+              <span>Add Teacher</span>
+            </button>
+          </form>
+        </div>
       </section>
 
       {/* Existing Teachers */}
@@ -132,6 +155,8 @@ const ManageTeachers = () => {
               <span className="material-symbols-outlined">search</span>
             </span>
             <input
+              value={searchTerm}
+              onChange={handleSearchInputChange}
               className="manage-teachers-search-input"
               placeholder="Search teachers..."
               type="text"
@@ -145,14 +170,14 @@ const ManageTeachers = () => {
               <tr>
                 <th className="manage-teachers-th">Name</th>
                 <th className="manage-teachers-th">Email</th>
-                <th className="manage-teachers-th manage-teachers-th-right">
+                <th className="manage-teachers-th">
                   Actions
                 </th>
               </tr>
             </thead>
             <tbody className="manage-teachers-tbody">
-              {teachers.length > 0 ? (
-                teachers.map((teacher) => (
+              {filteredTeachers.length > 0 ? (
+                filteredTeachers.map((teacher) => (
                   <tr
                     key={teacher.id}
                     className="manage-teachers-row"
@@ -174,7 +199,7 @@ const ManageTeachers = () => {
                     <td className="manage-teachers-td">
                       {teacher.email}
                     </td>
-                    <td className="manage-teachers-td manage-teachers-td-right">
+                    <td className="manage-teachers-td">
                       <div className="manage-teachers-actions">
                         <button
                           className="manage-teachers-icon-btn"
@@ -213,7 +238,7 @@ const ManageTeachers = () => {
 
         <div className="manage-teachers-footer">
           <span className="manage-teachers-footer-text">
-            Showing {teachers.length} teachers
+            Showing {filteredTeachers.length} teachers
           </span>
         </div>
       </section>
