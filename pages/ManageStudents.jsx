@@ -109,7 +109,7 @@ const ManageStudents = () => {
         <div>
           <h2 className="manage-students-title">Manage Students</h2>
           <p className="manage-students-subtitle">
-            Add, edit, and organize student records.
+            Easily add, manage and view all student information here.
           </p>
         </div>
       </div>
@@ -118,9 +118,6 @@ const ManageStudents = () => {
       <section className="manage-card">
         <div className="manage-card-header">
           <h3 className="manage-card-header-title">
-            <span className="material-symbols-outlined manage-card-header-icon">
-              person_add
-            </span>
             Add New Student
           </h3>
         </div>
@@ -137,7 +134,7 @@ const ManageStudents = () => {
                   setFormState({ ...formState, name: e.target.value })
                 }
                 className="manage-input"
-                placeholder="e.g. Sarah Williams"
+                placeholder="Enter student name"
                 type="text"
               />
             </div>
@@ -149,7 +146,7 @@ const ManageStudents = () => {
                   setFormState({ ...formState, email: e.target.value })
                 }
                 className="manage-input"
-                placeholder="student@edu.com"
+                placeholder="Enter student email"
                 type="email"
               />
             </div>
@@ -180,7 +177,7 @@ const ManageStudents = () => {
                 type="submit"
               >
                 <span className="material-symbols-outlined">add</span>
-                <span>Register Student</span>
+                <span>Add Student</span>
               </button>
             </div>
           </form>
@@ -190,7 +187,7 @@ const ManageStudents = () => {
       {/* Student Directory */}
       <section className="manage-card">
         <div className="manage-card-header manage-table-header">
-          <h3 className="manage-card-header-title">Student Directory</h3>
+          <h3 className="manage-card-header-title">Students List</h3>
           <div className="manage-filters">
             <div className="manage-session-toggle">
               <button
@@ -230,9 +227,6 @@ const ManageStudents = () => {
                 Evening
               </button>
             </div>
-            <button className="manage-download-btn">
-              <span className="material-symbols-outlined">download</span>
-            </button>
           </div>
         </div>
 

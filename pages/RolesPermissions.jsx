@@ -3,15 +3,6 @@ import '../styles/RolesPermissions.css';
 
 const INITIAL_ROLES = [
   {
-    id: '1',
-    name: 'Super Admin',
-    description: 'Full System Access',
-    permissions: ['all'],
-    icon: 'admin_panel_settings',
-    colorClass: 'role-avatar-neutral',
-    isSystem: true,
-  },
-  {
     id: '2',
     name: 'Teacher',
     description: 'Standard access for teaching staff',
@@ -87,7 +78,7 @@ const PERMISSION_GROUPS = [
 const RolesPermissions = () => {
   const [roles, setRoles] = useState(INITIAL_ROLES);
   const [selectedRoleId, setSelectedRoleId] = useState('2');
-  const [formData, setFormData] = useState(INITIAL_ROLES[1]);
+  const [formData, setFormData] = useState(INITIAL_ROLES[0]);
 
   useEffect(() => {
     const role = roles.find((r) => r.id === selectedRoleId);
@@ -115,7 +106,7 @@ const RolesPermissions = () => {
         <div>
           <h2 className="roles-title">Roles & Permissions</h2>
           <p className="roles-subtitle">
-            Manage system access levels and granular permissions.
+            Easily manage all user roles, permissions and access control from here.
           </p>
         </div>
       </div>
@@ -227,21 +218,6 @@ const RolesPermissions = () => {
                   </button>
                 );
               })}
-            </div>
-          </div>
-
-          <div className="roles-sidebar-info">
-            <div className="roles-sidebar-info-inner">
-              <span className="material-symbols-outlined roles-info-icon">
-                info
-              </span>
-              <div className="roles-info-text">
-                <p className="roles-info-title">About Roles</p>
-                <p className="roles-info-body">
-                  Changes to permissions affect all users assigned to this role
-                  immediately. Be careful when modifying core roles like Admin.
-                </p>
-              </div>
             </div>
           </div>
         </div>

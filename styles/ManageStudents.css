@@ -188,18 +188,18 @@
   gap: 0.5rem;
   padding: 0.625rem 1rem;
   border-radius: 0.5rem;
-  background-color: #2563eb;
+  background-color: #5EED4E;
   color: #000000;
   font-size: 0.875rem;
   font-weight: 500;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 6px rgba(94, 237, 78, 0.3);
   transition: background-color 150ms ease, transform 50ms ease;
 }
 
 .manage-submit-btn:hover {
-  background-color: #1d4ed8;
+  background-color: #4DD841;
 }
 
 .manage-submit-btn:active {
@@ -305,29 +305,6 @@
   background-color: rgba(71, 85, 105, 0.5);
 }
 
-/* Download button */
-.manage-download-btn {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #e2e8f0;
-  background-color: transparent;
-  color: #64748b;
-  cursor: pointer;
-  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
-}
-
-.manage-download-btn:hover {
-  background-color: #f8fafc;
-  color: #2563eb;
-}
-
-.dark .manage-download-btn {
-  border-color: #334155;
-}
-
-.dark .manage-download-btn:hover {
-  background-color: #1e293b;
-}
 
 /* Table */
 .manage-table-wrapper {

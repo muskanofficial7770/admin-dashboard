@@ -282,54 +282,6 @@
   color: #94a3b8;
 }
 
-.roles-sidebar-info {
-  background-color: #f8fafc;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  border: 1px solid #e2e8f0;
-}
-
-.dark .roles-sidebar-info {
-  background-color: #1e293b;
-  border-color: #334155;
-}
-
-.roles-sidebar-info-inner {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.roles-info-icon {
-  color: #2563eb;
-  font-size: 1.125rem;
-  flex-shrink: 0;
-}
-
-.roles-info-text {
-  flex: 1;
-}
-
-.roles-info-title {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #0f172a;
-  margin: 0 0 0.25rem 0;
-}
-
-.dark .roles-info-title {
-  color: #ffffff;
-}
-
-.roles-info-body {
-  font-size: 0.75rem;
-  color: #64748b;
-  margin: 0;
-  line-height: 1.4;
-}
-
-.dark .roles-info-body {
-  color: #94a3b8;
-}
 
 .roles-editor-card {
   flex: 1;

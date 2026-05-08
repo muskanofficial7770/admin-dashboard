@@ -149,7 +149,7 @@ const ManageTeachers = () => {
       {/* Existing Teachers */}
       <section className="manage-teachers-table-card">
         <div className="manage-teachers-table-header">
-          <h3 className="manage-teachers-card-title">Existing Teachers</h3>
+          <h3 className="manage-teachers-card-title">Teachers List</h3>
           <div className="manage-teachers-search-wrapper">
             <span className="manage-teachers-search-icon">
               <span className="material-symbols-outlined">search</span>
