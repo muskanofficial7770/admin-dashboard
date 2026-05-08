@@ -7,21 +7,12 @@ const INITIAL_ROLES = [
     name: 'Teacher',
     description: 'Standard access for teaching staff',
     permissions: [
-      'user.view',
       'idea.upload',
       'template.upload',
-      'idea.submit',
       'idea.view',
       'template.view',
       'idea.review',
-      'group.manage',
-      'progress.track',
-      'task.create',
-      'task.assign',
-      'task.update',
-      'diagram.create',
-      'notification.send',
-      'notification.receive',
+      'progress.track'
     ],
     icon: 'person_apron',
     colorClass: 'role-avatar-primary',
@@ -30,7 +21,7 @@ const INITIAL_ROLES = [
     id: '3',
     name: 'Student',
     description: 'Limited Access',
-    permissions: ['idea.submit', 'idea.view', 'task.view'],
+    permissions: ['idea.submit', 'progress.track', 'idea.view', 'template.view', 'use.diagram', 'create.task', 'assign.task', 'view.task'],
     icon: 'school',
     colorClass: 'role-avatar-neutral',
   },
@@ -38,40 +29,25 @@ const INITIAL_ROLES = [
 
 const PERMISSION_GROUPS = [
   {
-    name: 'User Management',
-    icon: 'manage_accounts',
-    perms: ['user.create', 'user.edit', 'user.delete', 'user.view'],
-  },
-  {
     name: 'Ideas & Templates',
     icon: 'lightbulb',
     perms: [
       'idea.upload',
       'template.upload',
-      'idea.submit',
       'idea.view',
       'template.view',
+      'idea.review'
     ],
   },
   {
     name: 'Review & Groups',
     icon: 'rate_review',
-    perms: ['idea.review', 'group.manage', 'progress.track'],
+    perms: ['progress.track'],
   },
   {
-    name: 'Task Management',
+    name: 'Tasks & Diagrams',
     icon: 'task',
-    perms: ['task.create', 'task.assign', 'task.update', 'task.view'],
-  },
-  {
-    name: 'Diagramming',
-    icon: 'draw',
-    perms: ['diagram.create', 'diagram.save', 'diagram.download'],
-  },
-  {
-    name: 'System Notifications',
-    icon: 'notifications',
-    perms: ['notification.send', 'notification.receive'],
+    perms: ['create.task', 'assign.task', 'view.task', 'use.diagram'],
   },
 ];
 
@@ -98,6 +74,10 @@ const RolesPermissions = () => {
       ? formData.permissions.filter((p) => p !== perm)
       : [...formData.permissions, perm];
     setFormData({ ...formData, permissions: newPerms });
+    
+    // Auto-save when permissions change
+    const updatedRoles = roles.map((r) => (r.id === formData.id ? { ...formData, permissions: newPerms } : r));
+    setRoles(updatedRoles);
   };
 
   return (
@@ -238,15 +218,6 @@ const RolesPermissions = () => {
                 </p>
               </div>
             </div>
-            <div className="roles-editor-header-right">
-              <button
-                onClick={handleSave}
-                className="roles-save-btn"
-              >
-                <span className="material-symbols-outlined">save</span>
-                <span>Save Role</span>
-              </button>
-            </div>
           </div>
 
           <div className="roles-editor-body">
@@ -311,37 +282,22 @@ const RolesPermissions = () => {
                     </p>
                   </div>
                 ) : (
-                  <div className="roles-perm-grid">
-                    {PERMISSION_GROUPS.map((group) => (
-                      <div
-                        key={group.name}
-                        className="roles-perm-group"
+                  <div className="roles-perm-list">
+                    {PERMISSION_GROUPS.flatMap((group) => group.perms).map((perm) => (
+                      <label
+                        key={perm}
+                        className="roles-perm-item"
                       >
-                        <div className="roles-perm-group-header">
-                          <span className="material-symbols-outlined roles-perm-group-icon">
-                            {group.icon}
-                          </span>
-                          <span className="roles-perm-group-title">
-                            {group.name}
-                          </span>
-                        </div>
-                        {group.perms.map((perm) => (
-                          <label
-                            key={perm}
-                            className="roles-perm-item"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={formData.permissions.includes(perm)}
-                              onChange={() => togglePermission(perm)}
-                              className="roles-perm-checkbox"
-                            />
-                            <span className="roles-perm-code">
-                              {perm}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
+                        <input
+                          type="checkbox"
+                          checked={formData.permissions.includes(perm)}
+                          onChange={() => togglePermission(perm)}
+                          className="roles-perm-checkbox"
+                        />
+                        <span className="roles-perm-code">
+                          {perm}
+                        </span>
+                      </label>
                     ))}
                   </div>
                 )}

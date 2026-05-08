@@ -352,29 +352,6 @@
   color: #94a3b8;
 }
 
-.roles-editor-header-right {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.roles-save-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background-color: #2563eb;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: background-color 150ms ease;
-}
-
-.roles-save-btn:hover {
-  background-color: #1d4ed8;
-}
 
 .roles-editor-body {
   padding: 1.5rem;
@@ -517,68 +494,37 @@
   color: #94a3b8;
 }
 
-.roles-perm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-.roles-perm-group {
+.roles-perm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
   background-color: #f8fafc;
   border-radius: 0.5rem;
   border: 1px solid #e2e8f0;
-  overflow: hidden;
 }
 
-.dark .roles-perm-group {
+.dark .roles-perm-list {
   background-color: #1e293b;
   border-color: #334155;
-}
-
-.roles-perm-group-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  border-bottom: 1px solid #e2e8f0;
-  background-color: #ffffff;
-}
-
-.dark .roles-perm-group-header {
-  border-bottom-color: #334155;
-  background-color: #020617;
-}
-
-.roles-perm-group-icon {
-  color: #2563eb;
-  font-size: 1rem;
-}
-
-.roles-perm-group-title {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #0f172a;
-}
-
-.dark .roles-perm-group-title {
-  color: #ffffff;
 }
 
 .roles-perm-item {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   cursor: pointer;
   transition: background-color 150ms ease;
+  border-radius: 0.375rem;
 }
 
 .roles-perm-item:hover {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .dark .roles-perm-item:hover {
-  background-color: #020617;
+  background-color: rgba(30, 41, 59, 0.5);
 }
 
 .roles-perm-checkbox {
